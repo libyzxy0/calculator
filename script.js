@@ -48,17 +48,27 @@ for (var i = 0; i < delClick.length; i++) {
 
 
 document.getElementById('equal').addEventListener('click', () => {
+  try {
     let val = screen.join('');
-    let finalRes = val.replace(/×/g, "*").replace(/÷/g, "/");
-    console.log(finalRes);
-    let answer = eval(finalRes);
-    screen = [];
-    screen.push(answer);
+    
+    // Replace '×' and '÷' with '*' and '/'
+    val = val.replace(/×/g, "*").replace(/÷/g, "/").replace(/%/g, "/100");
+    
+    let answer = eval(val);
+    screen = [answer];
     display.textContent = screen.join('');
-})
+  } catch (err) {
+    alert(err)
+  }
+});
+
 
 
 document.getElementById('clear-all').addEventListener('click', () => {
     screen = [];
     display.textContent= screen.join('');
 })
+
+function getPercentage(ans) {
+  return eval(ans / 100)
+}
