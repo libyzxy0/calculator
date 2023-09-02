@@ -62,13 +62,7 @@ document.getElementById('equal').addEventListener('click', () => {
   }
 });
 
-
-
 document.getElementById('clear-all').addEventListener('click', () => {
     screen = [];
     display.textContent= screen.join('');
 })
-
-function getPercentage(ans) {
-  return eval(ans / 100)
-}
